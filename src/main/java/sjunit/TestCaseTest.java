@@ -3,8 +3,6 @@ package sjunit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Method;
-
 public class TestCaseTest extends TestCase {
 
     private static final Logger logger = LoggerFactory.getLogger(TestCaseTest.class);
@@ -13,17 +11,7 @@ public class TestCaseTest extends TestCase {
         super(testCaseName);
     }
 
-    @Override
-    public void run() {
 
-        try {
-            logger.info("{} execute ", testCaseName);
-            Method method = this.getClass().getMethod(super.testCaseName, null);
-            method.invoke(this, null);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void runTest() {
         long sum = 10 + 10;
