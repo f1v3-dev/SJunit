@@ -16,16 +16,28 @@ public abstract class TestCase {
         this.testCaseName = testCaseName;
     }
 
+    public TestResult test() {
+        TestResult testResult = createTestResult();
+        run(testResult);
+
+        return testResult;
+    }
+
     /**
      * Test 구조
      * <p>
      * before() -> runTestCase() -> after()
      * </p>
      */
-    public void run() {
+    public void run(TestResult testResult) {
+        testResult.startTest();
         before();
         runTestCase();
         after();
+    }
+
+    private TestResult createTestResult() {
+        return new TestResult();
     }
 
     protected void before() {
