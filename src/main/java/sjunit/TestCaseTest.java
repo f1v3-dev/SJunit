@@ -7,19 +7,25 @@ public class TestCaseTest extends TestCase {
 
     private static final Logger logger = LoggerFactory.getLogger(TestCaseTest.class);
 
+    private static long base;
+
+    @Override
+    public void before() {
+        this.base = 10L;
+    }
+
     public TestCaseTest(String testCaseName) {
         super(testCaseName);
     }
 
 
-
     public void runTest() {
-        long sum = 10 + 10;
+        long sum = 10 + base;
         Assert.assertTrue(sum == 20);
     }
 
     public void runTestMinus() {
-        long minus = 100 - 10;
+        long minus = 100 - base;
         Assert.assertTrue(minus == 90);
     }
 

@@ -9,13 +9,29 @@ public abstract class TestCase {
 
     private static final Logger logger = LoggerFactory.getLogger(TestCase.class);
 
+
     protected String testCaseName;
 
     protected TestCase(String testCaseName) {
         this.testCaseName = testCaseName;
     }
 
+    /**
+     * Test 구조
+     * <p>
+     * before() -> runTestCase() -> after()
+     * </p>
+     */
     public void run() {
+        before();
+        runTestCase();
+        after();
+    }
+
+    protected void before() {
+    }
+
+    private void runTestCase() {
         try {
             logger.info("{} execute", testCaseName);
 
@@ -24,5 +40,8 @@ public abstract class TestCase {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    protected void after() {
     }
 }
