@@ -3,6 +3,9 @@ package sjunit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 테스트 결과를 출력하기 위한 클래스.
  * <p>
@@ -10,12 +13,52 @@ import org.slf4j.LoggerFactory;
  */
 public class TestResult {
 
+    private static class TestFailure {
+
+        private TestCase testCase;
+
+        public TestFailure(TestCase testCase) {
+            this.testCase = testCase;
+        }
+
+        public String getTestCaseName() {
+            return this.testCase.getTestCaseName();
+        }
+    }
+
+    private static class TestError {
+
+        private TestCase testCase;
+
+        private Exception exception;
+
+        public TestError(TestCase testCase, Exception exception) {
+            this.testCase = testCase;
+            this.exception = exception;
+        }
+
+        public String getTestCaseName() {
+            return this.testCase.getTestCaseName();
+        }
+
+        public Exception getException() {
+            return exception;
+        }
+
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(TestResult.class);
 
     private int runTestCount;
 
+    private List<TestFailure> failures;
+
+    private List<TestError> errors;
+
     public TestResult() {
         this.runTestCount = 0;
+        this.failures = new ArrayList<>();
+        this.errors = new ArrayList<>();
     }
 
     /**
@@ -27,7 +70,18 @@ public class TestResult {
         this.runTestCount++;
     }
 
+    public synchronized void addFailure(TestCase testCase) {
+        this.failures.add(new TestFailure(testCase));
+    }
+
+    public synchronized void addError(TestCase testCase, Exception e) {
+        this.errors.add(new TestError(testCase, e));
+    }
+
     public void printCount() {
         logger.info("Total Test Count: {}", runTestCount);
+        logger.info("Total Test Success Count: {}", runTestCount - failures.size() - errors.size());
+        logger.info("Total Test Failure Count: {}", failures.size());
+        logger.info("Total Test Error Count: {}", errors.size());
     }
 }

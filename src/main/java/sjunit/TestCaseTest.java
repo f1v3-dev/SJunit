@@ -26,7 +26,7 @@ public class TestCaseTest extends TestCase {
 
     public void runTestMinus() {
         long minus = 100 - base;
-        Assert.assertTrue(minus == 90);
+        Assert.assertTrue(minus == 80);
     }
 
     /**
