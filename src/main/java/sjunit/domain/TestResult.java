@@ -1,7 +1,8 @@
-package sjunit;
+package sjunit.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sjunit.TestCase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,40 +13,6 @@ import java.util.List;
  * Collecting Parameter Pattern 적용
  */
 public class TestResult {
-
-    private static class TestFailure {
-
-        private TestCase testCase;
-
-        public TestFailure(TestCase testCase) {
-            this.testCase = testCase;
-        }
-
-        public String getTestCaseName() {
-            return this.testCase.getTestCaseName();
-        }
-    }
-
-    private static class TestError {
-
-        private TestCase testCase;
-
-        private Exception exception;
-
-        public TestError(TestCase testCase, Exception exception) {
-            this.testCase = testCase;
-            this.exception = exception;
-        }
-
-        public String getTestCaseName() {
-            return this.testCase.getTestCaseName();
-        }
-
-        public Exception getException() {
-            return exception;
-        }
-
-    }
 
     private static final Logger logger = LoggerFactory.getLogger(TestResult.class);
 

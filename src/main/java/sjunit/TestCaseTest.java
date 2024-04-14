@@ -2,6 +2,8 @@ package sjunit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sjunit.assertion.Assert;
+import sjunit.domain.TestResult;
 
 public class TestCaseTest extends TestCase {
 

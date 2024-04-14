@@ -1,4 +1,4 @@
-package sjunit.error;
+package sjunit.assertion;
 
 /**
  * TestCase 실패시 발생하는 Error.
