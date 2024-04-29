@@ -1,6 +1,6 @@
 # SJunit
 
-> JUnit의 동작원리가 궁금하여 [JUnit 만들어보기](https://jojoldu.tistory.com/231)를 참고하여 나만의 JUnit 만들어보며 동작 과정을 파악하였습니다. 
+> JUnit의 동작원리가 궁금하여 [JUnit 만들어보기](https://jojoldu.tistory.com/231)를 참고하여 나만의 JUnit 만들며 동작 과정을 파악하였습니다. 
 
 - Maven
 - Java 17
